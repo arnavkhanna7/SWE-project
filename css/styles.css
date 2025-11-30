@@ -172,3 +172,215 @@ main { padding: 2rem; max-width: 1200px; margin: auto; }
     outline: 4px solid var(--focus);
     outline-offset: 3px;
 }
+
+/* ============================================ Barrierefreiheit Menü =================================================== */
+
+/* Barrierefreiheit Menü */
+/* Floating Button */
+#a11y-floating-btn {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+
+    width: 70px;
+    height: 70px;
+
+    background: #1a73e8;
+    color: white;
+    font-size: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    z-index: 100003 !important;
+
+    transition: 0.2s ease;
+}
+
+#a11y-floating-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Hintergrund-Overlay */
+#a11y-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 100001 !important;
+}
+
+#a11y-overlay.hidden {
+    display: none;
+}
+
+/* Menü */
+#a11y-menu {
+    position: fixed !important;
+    left: 20px;
+    bottom: 110px;
+
+    width: 320px;
+    background: #111;
+    color: white;
+
+    border-radius: 16px;
+    padding: 20px;
+
+    z-index: 100002 !important;
+    pointer-events: auto;
+
+    box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+    animation: fadeUp 0.25s ease;
+}
+
+#a11y-menu.hidden {
+    display: none;
+}
+
+#a11y-menu h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+}
+
+/* Liste */
+.a11y-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    transition: background 0.2s;
+}
+
+.a11y-option:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.a11y-icon {
+    font-size: 30px;
+    width: 40px;
+    text-align: center;
+}
+
+/* Reset */
+.a11y-option.reset {
+    background: rgba(255, 0, 0, 0.25);
+}
+
+.a11y-option.reset:hover {
+    background: rgba(255, 0, 0, 0.45);
+}
+
+/* Animation */
+@keyframes fadeUp {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Accessibility Effects */
+.a11y-big-font { font-size: 120%; }
+/* ====== Dark Mode – setzt neue Variablen ====== */
+body.a11y-dark {
+    --bg: #0b0b0b;        /* Seitenhintergrund */
+    --card: #111113;      /* Boxen, Karten, Hero */
+    --text: #f5f5f5;       /* Standardtext */
+    --muted: #c7c7c7;      /* Footer/sekundäre Texte */
+    --border: #2a2a2a;     /* Ränder */
+}
+
+
+
+.a11y-contrast #page-wrapper {
+    filter: contrast(160%);
+}
+
+.a11y-blue-filter #page-wrapper {
+    filter: hue-rotate(210deg);
+}
+
+.a11y-low-saturation #page-wrapper {
+    filter: saturate(30%);
+}
+
+.a11y-hide-images img { display: none !important; }
+
+/* Untermenü (z. B. Schriftgröße Slider) */
+.a11y-submenu {
+    margin-left: 52px;
+    margin-top: 6px;
+    margin-bottom: 12px;
+    padding: 10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+
+    position: static !important;
+    z-index: auto !important;
+    pointer-events: auto !important;
+}
+
+#font-slider {
+    width: 100%;
+}
+
+#font-slider-value {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* .hidden Klasse */
+.hidden {
+    display: none !important;
+}
+/* fix für die weisen striche die beim anklicken einer Farboption auftauchten */
+#page-wrapper {
+    min-height: 100vh;
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
+/* Stop Reading Button */
+#a11y-stop-reading-btn {
+    position: fixed;
+    left: 100px; /* Rechts vom A11y-Button */
+    bottom: 20px;
+
+    width: 70px;
+    height: 70px;
+
+    background: #e63946; /* Rot */
+    color: white;
+    font-size: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    z-index: 100003 !important;
+
+    transition: 0.2s ease;
+}
+
+#a11y-stop-reading-btn:hover {
+    transform: scale(1.1);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ========================================= Barrierefreiheit Menü Ende =========================================== */
+
+
+

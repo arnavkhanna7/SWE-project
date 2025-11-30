@@ -4,12 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lernplattform – HSGG</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
+<div id="page-wrapper">
+
 <?php
 include("komponenten/header.php");
+include("komponenten/barrierefreiheit.php");
 ?>
+
 
 <main id="hauptinhalt">
     <section class="hero">
@@ -20,9 +24,17 @@ include("komponenten/header.php");
     <section class="subjects">
         <h2>Fächer</h2>
         <div class="grid">
-            <a class="tile tile-color-yellow" href="faecher/deutsch.php"><div class="tile-icon">📘</div><div class="tile-title">Deutsch</div></a>
-            <a class="tile tile-color-blue" href="faecher/mathe.php"><div class="tile-icon">➗</div><div class="tile-title">Mathematik</div></a>
+            <a class="tile tile-color-yellow" href="faecher/deutsch/deutsch.php">
+                <div class="tile-icon">📘</div>
+                <div class="tile-title">Deutsch</div>
+            </a>
+            <a class="tile tile-color-blue" href="faecher/mathe/mathe.php">
+                <div class="tile-icon">➗</div>
+                <div class="tile-title">Mathematik</div>
+            </a>
+        </div>
     </section>
+
 
     <section class="quick-actions">
         <h2>Schnellzugriff</h2>
@@ -37,5 +49,6 @@ include("komponenten/header.php");
 <?php
 include("komponenten/footer.php");
 ?>
+</div>
 </body>
 </html>
