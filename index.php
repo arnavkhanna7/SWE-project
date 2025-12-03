@@ -1,3 +1,6 @@
+<?php
+session_start(); // <--- WICHTIG
+?>
 <!doctype html>
 <html lang="de">
 <head>
@@ -47,7 +50,7 @@ include("komponenten/barrierefreiheit.php");
 </main>
 
 <?php
-include("komponenten/footer.php");
+include("../komponenten/footer.php");
 ?>
 </div>
 </body>

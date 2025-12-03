@@ -1,3 +1,9 @@
+<?php
+// WICHTIG: Setzen Sie hier den Namen des Projektordners!
+$PROJECT_ROOT = '/Project';
+// Hier muss der Code stehen, der für den Header auch genutzt wird,
+// damit der CSS-Link im Head funktioniert.
+?>
 <!doctype html>
 <html lang="de">
 <head>
@@ -5,12 +11,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login – Administration</title>
     <link rel="stylesheet"
-          href="../css/styles.css">
+          href="<?php echo $PROJECT_ROOT; ?>/css/styles.css">
+</head>
+<body>
+<?php
+// Include-Pfad (für PHP) bleibt relativ, da er von login/ aus korrekt ist
+include("../komponenten/header.php");
+?>
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login – Administration</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 <?php
 // Include the shared header component
-include("../komponenten/header.php");
+include("komponenten/header.php");
 ?>
 
 <main id="hauptinhalt">
@@ -20,6 +39,20 @@ include("../komponenten/header.php");
     </section>
 
     <section class="login-form" style="max-width: 400px; margin: 2rem auto; padding: 2rem; background: var(--card); border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+
+        <?php if (isset($_GET['error'])): ?>
+            <div style="background-color: #fee2e2; color: #dc2626; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; text-align: center; border: 1px solid #fca5a5;">
+                <?php
+                if ($_GET['error'] == 'failed') {
+                    echo "❌ <strong>Login fehlgeschlagen!</strong><br>Benutzername oder Passwort falsch.";
+                } elseif ($_GET['error'] == 'empty') {
+                    echo "⚠️ <strong>Fehler:</strong><br>Bitte alle Felder ausfüllen.";
+                } elseif ($_GET['error'] == 'invalid') {
+                    echo "❌ <strong>Zugriff verweigert!</strong>";
+                }
+                ?>
+            </div>
+        <?php endif; ?>
         <form action="../Controllers/LoginController.php" method="POST">
             <div style="margin-bottom: 1.5rem;">
                 <label for="username" style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Benutzername</label>
@@ -44,7 +77,7 @@ include("../komponenten/header.php");
 </main>
 
 <?php
-include("../komponenten/footer.php");
+include("komponenten/footer.php");
 ?>
 </body>
 </html>

@@ -1,39 +1,50 @@
 <?php
-// controllers/LoginController.php
+session_start(); // Wichtig: Session starten, um den Login-Status zu merken
 
-// 1. Check if the form was submitted via POST method
+// Datenbank-Konfiguration einbinden (Pfad geht eins hoch '..' in den config-Ordner)
+require_once __DIR__ . '/../config/database.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // 2. Retrieve and sanitize user input
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
+    // Eingaben bereinigen
+    $username = trim($_POST['username'] ?? '');
+    $password = trim($_POST['password'] ?? '');
 
-    // 3. Simple Hardcoded Check (No DB integration, for initial development)
-    $HARDCODED_USERNAME = 'Admin';
-    $HARDCODED_PASSWORD = 'pass123';
+    // Einfache Validierung
+    if (empty($username) || empty($password)) {
+        header("Location: ../login/login.php?error=empty");
+        exit();
+    }
 
-    if ($username === $HARDCODED_USERNAME && $password === $HARDCODED_PASSWORD) {
+    // 1. Benutzer in der Datenbank suchen
+    // Wir nutzen Prepared Statements gegen SQL-Injections
+    /** @var PDO $pdo */
+    $stmt = $pdo->prepare("SELECT id, username, password_hash, role FROM users WHERE username = :username");
+    $stmt->execute(['username' => $username]);
+    $user = $stmt->fetch();
 
-        // --- SUCCESSFUL LOGIN LOGIC ---
+    // 2. Passwort prüfen (Hash vergleichen)
+    if ($user && password_verify($password, $user['password_hash'])) {
 
-        // session_start();
-        // $_SESSION['loggedin'] = true;
-        // $_SESSION['user_role'] = 'Teacher';
+        // --- LOGIN ERFOLGREICH ---
+        // Session-Variablen setzen
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['role'] = $user['role'];
 
-        // For now, just redirecting to temporary success page
-        header("Location: ../admin/dashboard.php");
+        // Weiterleitung zum Dashboard (Erstellen wir gleich in Schritt 4)
+        header("Location: ../admin/dashboard.php?msg=success");
         exit();
 
     } else {
 
-        // --- FAILED LOGIN LOGIC ---
-
-        // For this simple controller, we redirect back to the login page with an error flag.
-        header("Location: ../login.php?error=invalid");
+        // --- LOGIN FEHLGESCHLAGEN ---
+        header("Location: ../login/login.php?error=failed");
         exit();
     }
+
 } else {
-    // If someone tries to access the controller directly (not via form submission)
-    header("Location: ../login.php");
+    // Direkter Aufruf ohne POST verhindern
+    header("Location: ../login/login.php");
     exit();
 }
