@@ -1,0 +1,155 @@
+@charset "UTF-8";
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+th, td {
+    border: 1px solid #ccc;
+    padding: .3rem;
+}
+.inline-form {
+    display: inline;
+}
+button {
+    margin-left: .5rem;
+    background: #8f5bbf;
+    color: white;
+    border: none;
+    padding: .3rem .6rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background: #6f3fa3;
+}
+
+.fach-form {
+    display: grid;
+}
+
+.fach-form label {
+    font-weight: 600;
+}
+
+.fach-form input, .fach-form select {
+    padding: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.fach-form button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.fach-form button:hover {
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.4);
+}
+
+.fach-add-lila {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.3);
+    color: #fff;
+    max-width: 400px;
+    text-align: left;
+
+    /* Abstand nach oben */
+    margin-top: 2rem;
+}
+
+.fach-add-lila h2 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.fach-add-lila label {
+    font-weight: 600;
+    color: #fff;
+}
+
+.fach-add-lila input,
+.fach-add-lila select {
+    display: block;
+    width: 100%;
+    padding: 0.4rem;
+    border: none;
+    border-radius: 6px;
+    margin-bottom: 0.75rem;
+}
+
+.fach-add-lila button {
+    background: #fff;
+    color: #6a0dad;
+    font-weight: 600;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.fach-add-lila button:hover {
+    background: #f0f0f0;
+}
+
+
+.faecher-explanation-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    color: #fff;
+    margin: 1rem 0;
+}
+
+.faecher-explanation-box h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.faecher-explanation-box ul {
+    margin: .5rem 0 0;
+    padding-left: 1.2rem;
+}
+
+.faecher-explanation-box li {
+    margin-bottom: .4rem;
+    line-height: 1.4;
+}
+
+.fach-success-banner {
+    background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    box-shadow: 0 6px 16px rgba(76, 175, 80, 0.3);
+    text-align: center;
+}
+
+.fach-failure-banner {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.3);
+    text-align: center;
+}
+
+.fach-failure-banner::before {
+    content: "⚠️ ";
+}
+
+

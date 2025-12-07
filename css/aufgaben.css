@@ -1,0 +1,314 @@
+@charset "UTF-8";
+
+/* Extra Abstand nach dem Zurück-Button */
+.btn-back {
+    margin-bottom: 3rem !important;
+}
+
+.explanation-box {
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+}
+
+.explanation-box h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.explanation-box p {
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.explanation-box .example {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    border-left: 4px solid #fff;
+}
+
+.pdf-container {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.pdf-icon {
+    font-size: 3rem;
+}
+
+.pdf-info h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.pdf-info p {
+    margin: 0.5rem 0 0 0;
+    color: #666;
+}
+
+.pdf-embed {
+    width: 100%;
+    height: 600px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-download:hover {
+    transform: translateY(-2px);
+}
+
+.btn-show-solution {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.btn-show-solution:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+}
+
+.solution-section {
+    display: none;
+    margin-top: 2rem;
+    animation: slideDown 0.5s ease;
+}
+
+.solution-section.visible {
+    display: block;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tips-box {
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.tips-box h4 {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tips-box ul {
+    margin: 1rem 0 0 0;
+    padding-left: 1.5rem;
+}
+
+.tips-box li {
+    margin-bottom: 0.5rem;
+}
+
+.explanation-box-blue {
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+    box-shadow: 0 8px 20px rgba(33, 150, 243, 0.3);
+}
+
+.btn-download-blue {
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+}
+
+.btn-download-blue:hover {
+    box-shadow: 0 8px 20px rgba(33, 150, 243, 0.4);
+}
+
+.tips-box-blue {
+    background: #e3f2fd;
+    border-left: 4px solid #2196F3;
+}
+
+.tips-box-blue h4, .tips-box-blue li {
+    color: #1565C0;
+}
+
+.explanation-box-yellow {
+    background: linear-gradient(135deg, #FFC107 0%, #F57C00 100%);
+    box-shadow: 0 8px 20px rgba(255, 193, 7, 0.3);
+}
+
+.btn-download-yellow {
+    background: linear-gradient(135deg, #FFC107 0%, #F57C00 100%);
+}
+
+.btn-download-yellow:hover {
+    box-shadow: 0 8px 20px rgba(255, 193, 7, 0.4);
+}
+
+.tips-box-yellow {
+    background: #fff8e1;
+    border-left: 4px solid #FFC107;
+}
+
+.tips-box-yellow h4, .tips-box-yellow li {
+    color: #E65100;
+}
+
+.explanation-box-lila {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.btn-download-lila {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.btn-download-lila:hover {
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.tips-box-lila {
+    background: #e6e6fa;
+    border-left: 4px solid #9370db;
+}
+
+.tips-box-lila h4, .tips-box-lila li {
+    color: #6a0dad;
+}
+
+.explanation-box-green {
+    background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+}
+
+.btn-download-green {
+    background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+}
+
+.btn-download-green:hover {
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+}
+
+.tips-box-green {
+    background: #e8f5e9;
+    border-left: 4px solid #4CAF50;
+}
+
+.tips-box-green h4, .tips-box-green li {
+    color: #1B5E20;
+}
+
+/* Pink */
+.explanation-box-pink {
+    background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.3);
+}
+
+.btn-download-pink {
+    background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+}
+
+.btn-download-pink:hover {
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4);
+}
+
+.tips-box-pink {
+    background: #fce7f3;
+    border-left: 4px solid #ec4899;
+}
+
+.tips-box-pink h4, .tips-box-pink li {
+    color: #be185d;
+}
+
+/* Rot */
+.explanation-box-red {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
+}
+
+.btn-download-red {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+}
+
+.btn-download-red:hover {
+    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.4);
+}
+
+.tips-box-red {
+    background: #fee2e2;
+    border-left: 4px solid #dc2626;
+}
+
+.tips-box-red h4, .tips-box-red li {
+    color: #991b1b;
+}
+
+/* Orange */
+.explanation-box-orange {
+    background: linear-gradient(135deg, #f97316 0%, #c2410c 100%);
+    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+}
+
+.btn-download-orange {
+    background: linear-gradient(135deg, #f97316 0%, #c2410c 100%);
+}
+
+.btn-download-orange:hover {
+    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
+}
+
+.tips-box-orange {
+    background: #fff7ed;
+    border-left: 4px solid #f97316;
+}
+
+.tips-box-orange h4, .tips-box-orange li {
+    color: #9a3412;
+}
+

@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 1. Benutzer in der Datenbank suchen
     // Wir nutzen Prepared Statements gegen SQL-Injections
     /** @var PDO $pdo */
-    $stmt = $pdo->prepare("SELECT id, username, password_hash, role FROM users WHERE username = :username");
+    $stmt = $pdo->prepare("SELECT id, username, password_hash, role FROM lernplattform_db.users WHERE username = :username");
     $stmt->execute(['username' => $username]);
     $user = $stmt->fetch();
 

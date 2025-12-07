@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 :root {
     --bg: #f8fafc;
     --card: #ffffff;
@@ -382,52 +384,13 @@ body.a11y-dark {
 
 /* ========================================= Barrierefreiheit Menü Ende =========================================== */
 
+/* Richtext-Editor */
 
-/* --- User Menu im Header --- */
-.user-menu {
-    display: flex;
-    align-items: center;
-    gap: 1rem; /* Abstand zwischen Namen und Buttons */
+#editor {
+    height: 60vh;   /* 60% of viewport height */
+    /*width: 60vw;    /* 80% of viewport width */
 }
 
-.user-greeting {
-    font-size: 1rem;
-    color: var(--text);
+.ql-toolbar {
+    /*width: 60vw;   /* 80% of parent container */
 }
-
-.user-greeting strong {
-    color: var(--accent); /* Name in Akzentfarbe */
-}
-
-/* Kleinerer Button für das Dashboard im Header */
-.btn-sm {
-    background-color: var(--bg);
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    padding: 0.4rem 0.8rem;
-    border-radius: 999px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s ease;
-}
-
-.btn-sm:hover {
-    background-color: var(--accent);
-    color: white;
-}
-
-/* Logout Icon */
-.btn-logout {
-    font-size: 1.2rem;
-    text-decoration: none;
-    padding: 5px;
-    border-radius: 50%;
-    transition: background 0.2s;
-}
-
-.btn-logout:hover {
-    background-color: rgba(255, 0, 0, 0.1); /* Rötlicher Hintergrund beim Hover */
-}
-
-

@@ -15,6 +15,11 @@ session_start(); // <--- WICHTIG
 <?php
 include("komponenten/header.php");
 include("komponenten/barrierefreiheit.php");
+require_once("komponenten/db.php");
+?>
+
+<?php
+$faecher = query_simple_assoc("SELECT id, name, dir_name, symbol, kachelfarbe FROM hsgg.fach");
 ?>
 
 
@@ -27,16 +32,16 @@ include("komponenten/barrierefreiheit.php");
     <section class="subjects">
         <h2>Fächer</h2>
         <div class="grid">
-            <a class="tile tile-color-yellow" href="faecher/deutsch/deutsch.php">
-                <div class="tile-icon">📘</div>
-                <div class="tile-title">Deutsch</div>
-            </a>
-            <a class="tile tile-color-blue" href="faecher/mathe/mathe.php">
-                <div class="tile-icon">➗</div>
-                <div class="tile-title">Mathematik</div>
-            </a>
+            <?php
+            foreach ($faecher as $f) {
+                echo '<a class="tile tile-color-' . htmlspecialchars($f['kachelfarbe']) . '" href="faecher/fach.php?f=' . $f['id'] .'">';
+                echo '<div class="tile-icon">' . htmlspecialchars($f['symbol']) . '</div>';
+                echo '<div class="tile-title">' . htmlspecialchars($f['name']) . '</div></a>';
+            }
+            ?>
         </div>
     </section>
+
 
 
     <section class="quick-actions">
@@ -50,7 +55,7 @@ include("komponenten/barrierefreiheit.php");
 </main>
 
 <?php
-include("../komponenten/footer.php");
+include("komponenten/footer.php");
 ?>
 </div>
 </body>
