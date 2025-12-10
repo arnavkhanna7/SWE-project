@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 1. Benutzer in der Datenbank suchen
     // Wir nutzen Prepared Statements gegen SQL-Injections
     /** @var PDO $pdo */
-    $stmt = $pdo->prepare("SELECT id, username, password_hash, role FROM lernplattform_db.users WHERE username = :username");
+    $stmt = $pdo->prepare("SELECT id, username, password_hash, role, fachID FROM hsgg.users WHERE username = :username");
     $stmt->execute(['username' => $username]);
     $user = $stmt->fetch();
 
@@ -31,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['role'] = $user['role'];
+        $_SESSION['fachID'] = $user['fachID']; // <--- NEU: FachID speichern
 
         // Weiterleitung zum Dashboard (Erstellen wir gleich in Schritt 4)
         header("Location: ../admin/dashboard.php?msg=success");

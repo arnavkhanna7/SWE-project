@@ -18,9 +18,14 @@
 
     <?php
     require_once("../komponenten/db.php");
-    $fach = query_simple_assoc("SELECT * FROM fach");
+    $fach = query_simple_assoc("SELECT * FROM hsgg.fach");
+
+
 
     //=== Laden von Inhalten aus einer Übung ===
+    $user_role = $_SESSION['role'] ?? 'guest';
+    $user_fach_id = $_SESSION['fachID'] ?? null;
+
     if(isset($_POST["loadUebungSubmitted"])){
         $fachID    = $_POST['fachID'] ?? null;
         $uebungsID = $_POST['uebungsID'] ?? null;
@@ -39,10 +44,27 @@
     }
 
     //=== Speichern von Inhalten aus einer Übung ===
-    if(isset($_POST["saveUebungSubmitted"])){
-        update_editable_contents($_POST['uebungsID'], $_POST['explanation_box_content'], $_POST['tips_box_content']);
-        echo '<div id="success-box">Speichern erfolgreich</div>';
-    }
+//    if(isset($_POST["saveUebungSubmitted"])){
+//        update_editable_contents($_POST['uebungsID'], $_POST['explanation_box_content'], $_POST['tips_box_content']);
+//        echo '<div id="success-box">Speichern erfolgreich</div>';
+//    }
+        if(isset($_POST["saveUebungSubmitted"])){
+
+            $fachID_to_save = $_POST['fachID'] ?? null; // Das Fach, das gespeichert werden soll
+            $uebungsID_to_save = $_POST['uebungsID'] ?? null; // Die Übung, die gespeichert werden soll
+
+        // **NEU: ZUGRIFFSPRÜFUNG**
+            if ($user_role !== 'admin' && (int)$user_fach_id !== (int)$fachID_to_save) {
+            // Wenn der Benutzer kein Admin ist UND die FachID des Benutzers
+            // nicht mit der FachID des zu speichernden Inhalts übereinstimmt:
+                echo '<div id="success-box" style="background-color: #dc2626; color: white;">❌ Fehler: Keine Berechtigung zum Speichern in diesem Fach.</div>';
+            // Wir beenden die Funktion hier, um das Speichern zu verhindern
+            } else {
+            // Wenn Admin ODER Fach-ID übereinstimmt, speichern:
+                update_editable_contents($uebungsID_to_save, $_POST['explanation_box_content'], $_POST['tips_box_content']);
+                echo '<div id="success-box">Speichern erfolgreich</div>';
+            }
+        }
     ?>
 
     <main id="hauptinhalt">

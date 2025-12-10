@@ -167,3 +167,147 @@ VALUES ('Textaufgaben','textaufgaben', 'Knifflige Aufgaben zum logischen Denken'
         </ul>',
         1);
 
+INSERT INTO uebung (name, file_name, beschreibung, symbol, kachelfarbe, explanation_box, tips_box, fachID)
+VALUES ('Nomen','nomen', 'Entdecke Nomen, Wörter für Dinge.','📝','red',
+        '<h3>📝 Was sind Nomen?</h3>
+        <p>Nomen sind <strong>Wörter für Dinge, Menschen, Tiere, Orte und Gefühle</strong>.
+            Man erkennt sie daran, dass man einen Artikel davor setzen kann (der, die, das).
+            Außerdem werden Nomen im Deutschen immer großgeschrieben.
+        </p>
+
+        <div class="example">
+            <strong>Beispiel:</strong> Das Wort „Hund“ ist ein Nomen.
+            <br><br>
+            <strong>Schritt 1:</strong> Artikel davor setzen → der Hund
+            <br><strong>Schritt 2:</strong> Großschreibung beachten → Hund
+            <br><strong>Schritt 3:</strong> Plural bilden → Hunde
+            <br><strong>Schritt 4:</strong> Zusammensetzen → Haus + Hund = Haushund
+            <br><strong>Schritt 5:</strong> Antwort → „Hund“ ist ein Nomen, weil man „der“ davor setzen kann.
+        </div>
+        <p style="margin-top: 1.5rem;">
+            <strong>Wichtige Tipps:</strong>
+            <br>✓ Nomen immer großschreiben
+            <br>✓ Artikel davor setzen (der, die, das)
+            <br>✓ Überlege: Kann ich eine Mehrzahl bilden?
+            <br>✓ Prüfe: Passt das Nomen logisch in den Satz?
+        </p>',
+'<h4>💡 Tipps für Nomen</h4>
+        <ul>
+            <li>Setze einen Artikel davor – so erkennst du Nomen leicht</li>
+            <li>Schreibe Nomen immer groß</li>
+            <li>Übe, die Mehrzahl (Plural) zu bilden</li>
+            <li>Probiere zusammengesetzte Nomen (z. B. Haustür, Schultasche)</li>
+            <li>Frage dich: Ist mein Nomen sinnvoll im Satz?</li>
+            <li>Markiere Nomen in Texten, um sie besser zu erkennen</li>
+        </ul>',
+        2);
+
+INSERT INTO uebung (name, file_name, beschreibung, symbol, kachelfarbe, explanation_box, tips_box, fachID)
+VALUES ('Verben','verben', 'Verben beschreiben Handlungen oder Vorgänge, also was jemand tut oder passiert.','🏃‍♂️','blue',
+        '<h3>📝 Was sind Verben?</h3>
+<p>
+    Verben sind <strong>Wörter für Tätigkeiten, Vorgänge und Zustände</strong>.
+    Sie zeigen, was jemand tut, was passiert oder wie etwas ist.
+    Verben kann man in verschiedene Zeiten setzen (z. B. Gegenwart, Vergangenheit, Zukunft).
+</p>
+
+<div class="example">
+    <strong>Beispiel:</strong> Das Wort „laufen“ ist ein Verb.
+    <br><br>
+    <strong>Schritt 1:</strong> Frage: Was tut jemand? → Er läuft.
+    <br><strong>Schritt 2:</strong> Grundform (Infinitiv) → laufen
+    <br><strong>Schritt 3:</strong> Personalform bilden → ich laufe, du läufst, er läuft
+    <br><strong>Schritt 4:</strong> Zeitformen bilden → ich lief (Vergangenheit), ich werde laufen (Zukunft)
+    <br><strong>Schritt 5:</strong> Antwort → „laufen“ ist ein Verb, weil es eine Tätigkeit beschreibt.
+</div>
+
+<p style="margin-top: 1.5rem;">
+    <strong>Wichtige Tipps:</strong>
+    <br>✓ Verben beschreiben Handlungen, Vorgänge oder Zustände
+    <br>✓ Die Grundform heißt Infinitiv (z. B. spielen, essen, schlafen)
+    <br>✓ Verben werden je nach Person und Zahl verändert (ich gehe, wir gehen)
+    <br>✓ Verben können in verschiedenen Zeiten stehen (Präsens, Präteritum, Futur)
+</p>',
+    '<h4>💡 Tipps für Verben</h4>
+<ul>
+    <li>Frage dich: „Was tut jemand?“ – die Antwort ist meist ein Verb</li>
+    <li>Lerne die Grundform (Infinitiv) und die Personalformen</li>
+    <li>Übe die Zeitformen: Gegenwart, Vergangenheit, Zukunft</li>
+    <li>Verben sind das Herz eines Satzes – ohne Verb kein vollständiger Satz</li>
+    <li>Markiere Verben in Texten, um sie leichter zu erkennen</li>
+    <li>Probiere verschiedene Verben im Satz aus, um die Bedeutung zu verändern</li>
+</ul>',
+2);
+
+INSERT INTO uebung (name, file_name, beschreibung, symbol, kachelfarbe, explanation_box, tips_box, fachID)
+VALUES ('Adjektive','adjektive', 'Adjektive beschreiben die Eigenschaften von Dingen.','✨','green',
+        '<h3>📝 Was sind Adjektive?</h3>
+<p>
+    Adjektive sind <strong>Wörter, die Eigenschaften und Merkmale beschreiben</strong>.
+    Sie sagen, wie etwas ist, aussieht oder wirkt.
+    Mit Adjektiven kann man Dinge genauer erklären und vergleichen.
+</p>
+
+<div class="example">
+    <strong>Beispiel:</strong> Das Wort „schnell“ ist ein Adjektiv.
+    <br><br>
+    <strong>Schritt 1:</strong> Frage: Wie ist etwas? → Der Hund ist schnell.
+    <br><strong>Schritt 2:</strong> Grundform → schnell
+    <br><strong>Schritt 3:</strong> Steigerung bilden → schnell – schneller – am schnellsten
+    <br><strong>Schritt 4:</strong> Satz bilden → „Das Auto fährt schneller als das Fahrrad.“
+    <br><strong>Schritt 5:</strong> Antwort → „schnell“ ist ein Adjektiv, weil es eine Eigenschaft beschreibt.
+</div>
+
+<p style="margin-top: 1.5rem;">
+    <strong>Wichtige Tipps:</strong>
+    <br>✓ Adjektive beschreiben Eigenschaften (z. B. groß, klein, schön, kalt)
+    <br>✓ Sie können gesteigert werden (Positiv, Komparativ, Superlativ)
+    <br>✓ Adjektive machen Sätze genauer und lebendiger
+    <br>✓ Sie passen sich oft dem Nomen an (z. B. ein schöner Tag, eine schöne Blume)
+</p>',
+    '<h4>💡 Tipps für Adjektive</h4>
+<ul>
+    <li>Frage dich: „Wie ist etwas?“ – die Antwort ist meist ein Adjektiv</li>
+    <li>Übe die Steigerungsformen: groß – größer – am größten</li>
+    <li>Setze Adjektive vor Nomen, um sie genauer zu beschreiben</li>
+    <li>Probiere verschiedene Adjektive im Satz aus, um die Bedeutung zu verändern</li>
+    <li>Markiere Adjektive in Texten, um sie leichter zu erkennen</li>
+    <li>Nutze Adjektive, um Geschichten spannender und anschaulicher zu machen</li>
+</ul>', 2);
+
+INSERT INTO uebung (name, file_name, beschreibung, symbol, kachelfarbe, explanation_box, tips_box, fachID)
+VALUES ('Wörtliche Rede','woertliche_rede', 'Wörtliche Rede gibt wieder was jemand sagt, und steht in Anführungszeichen.','💬','pink',
+    '<h3>📝 Was ist wörtliche Rede?</h3>
+<p>
+    Wörtliche Rede bedeutet, dass <strong>genau wiedergegeben wird, was jemand sagt</strong>.
+    Sie steht immer in Anführungszeichen („…“) und wird oft mit einem Begleitsatz verbunden
+    (z. B. sagte Lisa, fragte Tom).
+</p>
+
+<div class="example">
+    <strong>Beispiel:</strong> Lisa sagt: „Ich gehe heute ins Kino.“
+    <br><br>
+    <strong>Schritt 1:</strong> Wer spricht? → Lisa
+    <br><strong>Schritt 2:</strong> Was sagt sie? → „Ich gehe heute ins Kino.“
+    <br><strong>Schritt 3:</strong> Anführungszeichen setzen → „…“
+    <br><strong>Schritt 4:</strong> Begleitsatz hinzufügen → Lisa sagt:
+    <br><strong>Schritt 5:</strong> Antwort → Lisa sagt: „Ich gehe heute ins Kino.“
+</div>
+
+<p style="margin-top: 1.5rem;">
+    <strong>Wichtige Tipps:</strong>
+    <br>✓ Wörtliche Rede steht immer in Anführungszeichen („…“)
+    <br>✓ Ein Begleitsatz erklärt, wer spricht (z. B. sagte Anna)
+    <br>✓ Nach dem Begleitsatz folgt ein Doppelpunkt
+    <br>✓ Achte auf die richtige Zeichensetzung
+</p>',
+    '<h4>💡 Tipps für wörtliche Rede</h4>
+<ul>
+    <li>Setze Anführungszeichen um das Gesagte („…“)</li>
+    <li>Nutze einen Begleitsatz: sagte, fragte, rief …</li>
+    <li>Denke an den Doppelpunkt vor der wörtlichen Rede</li>
+    <li>Beginne die wörtliche Rede mit einem Großbuchstaben</li>
+    <li>Übe mit kurzen Dialogen, um sicherer zu werden</li>
+    <li>Kontrolliere: Stimmen Anführungszeichen und Satzzeichen?</li>
+</ul>',
+2);

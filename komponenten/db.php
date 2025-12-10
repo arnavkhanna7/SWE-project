@@ -29,7 +29,7 @@ function query_uebungen_fid($fid) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $stmt = $conn->prepare('SELECT * FROM uebung WHERE fachID = ?');
+    $stmt = $conn->prepare('SELECT * FROM hsgg.uebung WHERE fachID = ?');
     $stmt->bind_param("s", $fid);
     $stmt->execute();
     $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -46,7 +46,7 @@ function query_fach_fid($fid) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $stmt = $conn->prepare('SELECT * FROM fach WHERE id = ?');
+    $stmt = $conn->prepare('SELECT * FROM hsgg.fach WHERE id = ?');
     $stmt->bind_param("s", $fid);
     $stmt->execute();
     $result = $stmt->get_result()->fetch_assoc();
@@ -63,7 +63,7 @@ function query_uebung_fid_uid($fid, $uid) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $stmt = $conn->prepare('SELECT * FROM uebung WHERE fachID = ? AND id = ?');
+    $stmt = $conn->prepare('SELECT * FROM hsgg.uebung WHERE fachID = ? AND id = ?');
     $stmt->bind_param("ss", $fid, $uid);
     $stmt->execute();
     $result = $stmt->get_result()->fetch_assoc();
@@ -80,7 +80,7 @@ function db_query_uebung_fach($uid) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $stmt = $conn->prepare('SELECT fachID FROM uebung WHERE id = ?');
+    $stmt = $conn->prepare('SELECT fachID FROM hsgg.uebung WHERE id = ?');
     $stmt->bind_param("s",$uid);
     $stmt->execute();
     $result = $stmt->get_result()->fetch_assoc();
@@ -97,7 +97,7 @@ function update_editable_contents($uid, $explanation_box, $tips_box) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $stmt = $conn->prepare('UPDATE uebung SET explanation_box = ?, tips_box = ? WHERE id = ?;');
+    $stmt = $conn->prepare('UPDATE hsgg.uebung SET explanation_box = ?, tips_box = ? WHERE id = ?;');
     $stmt->bind_param("sss", $explanation_box, $tips_box, $uid);
     $stmt->execute();
     $conn->close();
@@ -112,7 +112,7 @@ function db_insert_new_fach($name, $dir_name, $symbol, $kachelfarbe) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $stmt = $conn->prepare('INSERT INTO fach (name, dir_name, symbol, kachelfarbe) VALUES (?, ?, ?, ?);');
+    $stmt = $conn->prepare('INSERT INTO hsgg.fach (name, dir_name, symbol, kachelfarbe) VALUES (?, ?, ?, ?);');
     $stmt->bind_param("ssss", $name, $dir_name, $symbol, $kachelfarbe);
     $stmt->execute();
     $conn->close();
@@ -126,7 +126,7 @@ function db_update_fach($fid, $name, $dir_name, $symbol, $kachelfarbe) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $stmt = $conn->prepare('UPDATE fach SET name = ?, symbol = ?, kachelfarbe = ? WHERE id = ?');
+    $stmt = $conn->prepare('UPDATE hsgg.fach SET name = ?, symbol = ?, kachelfarbe = ? WHERE id = ?');
     $stmt->bind_param("ssss", $name, $symbol, $kachelfarbe, $fid);
     $stmt->execute();
     $conn->close();
@@ -140,7 +140,7 @@ function db_delete_fach($fid) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $stmt = $conn->prepare('DELETE FROM fach WHERE id = ?');
+    $stmt = $conn->prepare('DELETE FROM hsgg.fach WHERE id = ?');
     $stmt->bind_param("s", $fid);
     $stmt->execute();
     $conn->close();
@@ -158,7 +158,7 @@ function db_insert_new_uebung($fid, $name, $file_name, $beschreibung, $symbol, $
     $explanation_box = "";
     $tips_box = "";
 
-    $stmt = $conn->prepare('INSERT INTO uebung (name, file_name, beschreibung, symbol, kachelfarbe, fachID, explanation_box, tips_box) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+    $stmt = $conn->prepare('INSERT INTO hsgg.uebung (name, file_name, beschreibung, symbol, kachelfarbe, fachID, explanation_box, tips_box) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
     $stmt->bind_param("sssssiss", $name, $file_name, $beschreibung, $symbol, $kachelfarbe, $fid_int, $explanation_box, $tips_box);
     $stmt->execute();
     $conn->close();
@@ -174,7 +174,7 @@ function db_update_uebung($id, $name, $file_name, $beschreibung, $symbol, $kache
 
     $fid_int = (int)$fachID;
 
-    $stmt = $conn->prepare('UPDATE uebung SET name = ?, file_name = ?,beschreibung = ?, symbol = ?, kachelfarbe = ?, fachID = ? WHERE id = ?;');
+    $stmt = $conn->prepare('UPDATE hsgg.uebung SET name = ?, file_name = ?,beschreibung = ?, symbol = ?, kachelfarbe = ?, fachID = ? WHERE id = ?;');
     $stmt->bind_param("sssssis", $name, $file_name, $beschreibung, $symbol, $kachelfarbe, $fachID, $id);
     $stmt->execute();
     $conn->close();
@@ -188,7 +188,7 @@ function db_delete_uebung($fid) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $stmt = $conn->prepare('DELETE FROM uebung WHERE id = ?');
+    $stmt = $conn->prepare('DELETE FROM hsgg.uebung WHERE id = ?');
     $stmt->bind_param("s", $fid);
     $stmt->execute();
     $conn->close();
