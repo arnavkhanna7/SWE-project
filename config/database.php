@@ -2,8 +2,8 @@
 // config/database.php
 
 // Passen Sie diese Daten an Ihre lokale Umgebung an
-$host = '127.0.0.1';
-$db   = 'lernplattform_db';
+$host = 'localhost';
+$db   = 'hsgg';
 $user = 'root';        // XAMPP Standard: 'root'
 $pass = 'root';            // XAMPP Standard: leer lassen
 $charset = 'utf8mb4';

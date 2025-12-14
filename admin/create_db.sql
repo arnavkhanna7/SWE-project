@@ -203,43 +203,6 @@ VALUES ('Nomen','nomen', 'Entdecke Nomen, Wörter für Dinge.','📝','red',
         2);
 
 INSERT INTO uebung (name, file_name, beschreibung, symbol, kachelfarbe, explanation_box, tips_box, fachID)
-VALUES ('Verben','verben', 'Verben beschreiben Handlungen oder Vorgänge, also was jemand tut oder passiert.','🏃‍♂️','blue',
-        '<h3>📝 Was sind Verben?</h3>
-<p>
-    Verben sind <strong>Wörter für Tätigkeiten, Vorgänge und Zustände</strong>.
-    Sie zeigen, was jemand tut, was passiert oder wie etwas ist.
-    Verben kann man in verschiedene Zeiten setzen (z. B. Gegenwart, Vergangenheit, Zukunft).
-</p>
-
-<div class="example">
-    <strong>Beispiel:</strong> Das Wort „laufen“ ist ein Verb.
-    <br><br>
-    <strong>Schritt 1:</strong> Frage: Was tut jemand? → Er läuft.
-    <br><strong>Schritt 2:</strong> Grundform (Infinitiv) → laufen
-    <br><strong>Schritt 3:</strong> Personalform bilden → ich laufe, du läufst, er läuft
-    <br><strong>Schritt 4:</strong> Zeitformen bilden → ich lief (Vergangenheit), ich werde laufen (Zukunft)
-    <br><strong>Schritt 5:</strong> Antwort → „laufen“ ist ein Verb, weil es eine Tätigkeit beschreibt.
-</div>
-
-<p style="margin-top: 1.5rem;">
-    <strong>Wichtige Tipps:</strong>
-    <br>✓ Verben beschreiben Handlungen, Vorgänge oder Zustände
-    <br>✓ Die Grundform heißt Infinitiv (z. B. spielen, essen, schlafen)
-    <br>✓ Verben werden je nach Person und Zahl verändert (ich gehe, wir gehen)
-    <br>✓ Verben können in verschiedenen Zeiten stehen (Präsens, Präteritum, Futur)
-</p>',
-    '<h4>💡 Tipps für Verben</h4>
-<ul>
-    <li>Frage dich: „Was tut jemand?“ – die Antwort ist meist ein Verb</li>
-    <li>Lerne die Grundform (Infinitiv) und die Personalformen</li>
-    <li>Übe die Zeitformen: Gegenwart, Vergangenheit, Zukunft</li>
-    <li>Verben sind das Herz eines Satzes – ohne Verb kein vollständiger Satz</li>
-    <li>Markiere Verben in Texten, um sie leichter zu erkennen</li>
-    <li>Probiere verschiedene Verben im Satz aus, um die Bedeutung zu verändern</li>
-</ul>',
-2);
-
-INSERT INTO uebung (name, file_name, beschreibung, symbol, kachelfarbe, explanation_box, tips_box, fachID)
 VALUES ('Adjektive','adjektive', 'Adjektive beschreiben die Eigenschaften von Dingen.','✨','green',
         '<h3>📝 Was sind Adjektive?</h3>
 <p>
@@ -311,3 +274,40 @@ VALUES ('Wörtliche Rede','woertliche_rede', 'Wörtliche Rede gibt wieder was je
     <li>Kontrolliere: Stimmen Anführungszeichen und Satzzeichen?</li>
 </ul>',
 2);
+
+INSERT INTO uebung (name, file_name, beschreibung, symbol, kachelfarbe, explanation_box, tips_box, fachID)
+VALUES ('Verben','verben', 'Verben beschreiben Handlungen oder Vorgänge, also was jemand tut oder passiert.','🏃‍♂️','blue',
+        '<h3>📝 Was sind Verben?</h3>
+<p>
+    Verben sind <strong>Wörter für Tätigkeiten, Vorgänge und Zustände</strong>.
+    Sie zeigen, was jemand tut, was passiert oder wie etwas ist.
+    Verben kann man in verschiedene Zeiten setzen (z. B. Gegenwart, Vergangenheit, Zukunft).
+</p>
+
+<div class="example">
+    <strong>Beispiel:</strong> Das Wort „laufen“ ist ein Verb.
+    <br><br>
+    <strong>Schritt 1:</strong> Frage: Was tut jemand? → Er läuft.
+    <br><strong>Schritt 2:</strong> Grundform (Infinitiv) → laufen
+    <br><strong>Schritt 3:</strong> Personalform bilden → ich laufe, du läufst, er läuft
+    <br><strong>Schritt 4:</strong> Zeitformen bilden → ich lief (Vergangenheit), ich werde laufen (Zukunft)
+    <br><strong>Schritt 5:</strong> Antwort → „laufen“ ist ein Verb, weil es eine Tätigkeit beschreibt.
+</div>
+
+<p style="margin-top: 1.5rem;">
+    <strong>Wichtige Tipps:</strong>
+    <br>✓ Verben beschreiben Handlungen, Vorgänge oder Zustände
+    <br>✓ Die Grundform heißt Infinitiv (z. B. spielen, essen, schlafen)
+    <br>✓ Verben werden je nach Person und Zahl verändert (ich gehe, wir gehen)
+    <br>✓ Verben können in verschiedenen Zeiten stehen (Präsens, Präteritum, Futur)
+</p>',
+        '<h4>💡 Tipps für Verben</h4>
+    <ul>
+        <li>Frage dich: „Was tut jemand?“ – die Antwort ist meist ein Verb</li>
+        <li>Lerne die Grundform (Infinitiv) und die Personalformen</li>
+        <li>Übe die Zeitformen: Gegenwart, Vergangenheit, Zukunft</li>
+        <li>Verben sind das Herz eines Satzes – ohne Verb kein vollständiger Satz</li>
+        <li>Markiere Verben in Texten, um sie leichter zu erkennen</li>
+        <li>Probiere verschiedene Verben im Satz aus, um die Bedeutung zu verändern</li>
+    </ul>',
+        2);

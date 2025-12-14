@@ -43,3 +43,9 @@ ALTER TABLE hsgg.users
 UPDATE hsgg.users SET fachID = 1 WHERE username = 'MatheLehrer';
 UPDATE hsgg.users SET fachID = 2 WHERE username = 'DeutschLehrer';
 UPDATE hsgg.users SET fachID = 4 WHERE username = 'EnglischLehrer';
+
+
+# Theacher id für Schühler accounts in der Tabelle hinzufügen
+ALTER TABLE users
+    ADD COLUMN teacher_id INT NULL,
+    ADD COLUMN klasse VARCHAR(20) NULL;

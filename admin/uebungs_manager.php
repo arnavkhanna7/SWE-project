@@ -8,7 +8,7 @@ $user_fach_id = $_SESSION['fachID'] ?? null; // FachID des eingeloggten Lehrers
 
 // Einbinden der DB-Funktionen (wichtig, dass dieser Pfad korrekt ist)
 require_once("../komponenten/db.php");
-include_once("../komponenten/util.php");
+require_once("../komponenten/util.php");
 
 // HILFSFUNKTION für die Berechtigungsprüfung
 function has_permission($user_role, $user_fach_id, $target_fachID): bool
@@ -222,6 +222,7 @@ try {
     <?php
     include("../komponenten/header.php");
     include("../komponenten/barrierefreiheit.php");
+    include_once("../komponenten/emoji_picker.php");
     ?>
 
 
@@ -281,7 +282,29 @@ try {
                             <td><input type="text" name="name" value="<?= htmlspecialchars($uebung['name']) ?>" required maxlength="40"></td>
                             <td><input type="text" name="file_name" value="<?= htmlspecialchars($uebung['file_name']) ?>" required disabled maxlength="40"></td>
                             <td><input type="text" name="beschreibung" value="<?= htmlspecialchars($uebung['beschreibung']) ?>" required maxlength="80"></td>
-                            <td><input type="text" name="symbol" value="<?= htmlspecialchars($uebung['symbol']) ?>" maxlength="10"></td>
+                            <td>
+                                <div class="emoji-select-wrapper">
+                                    <div class="emoji-preview">
+                                        <span class="emoji-display">
+                                            <?php if (!empty($uebung['symbol'])): ?>
+                                                <?= htmlspecialchars($uebung['symbol']) ?>
+                                            <?php endif; ?>
+                                        </span>
+                                        <span class="dropdown-arrow">▼</span>
+                                    </div>
+                                    <div class="emoji-dropdown">
+                                        <div class="emoji-grid">
+                                            <?php global $availableEmojis; foreach ($availableEmojis as $emoji): ?>
+                                                <div class="emoji-option <?= ($uebung['symbol'] === $emoji ? 'selected' : '') ?>"
+                                                     data-emoji="<?= htmlspecialchars($emoji) ?>">
+                                                    <?= htmlspecialchars($emoji) ?>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="symbol" value="<?= htmlspecialchars($uebung['symbol']) ?>">
+                                </div>
+                            </td>
                             <td>
                                 <select name="kachelfarbe" required>
                                     <option value="blue"   <?= ($uebung['kachelfarbe'] === 'blue'   ? 'selected' : '') ?>>Blau</option>
@@ -335,7 +358,27 @@ try {
                 <input type="text" id="beschreibung" name="beschreibung" required>
 
                 <label for="symbol">Symbol:</label>
-                <input type="text" id="symbol" name="symbol">
+                <div class="emoji-select-wrapper">
+                    <div class="emoji-preview">
+                                        <span class="emoji-display">
+                                            <?php if (!empty($fach['symbol'])): ?>
+                                                <?= htmlspecialchars($fach['symbol']) ?>
+                                            <?php endif; ?>
+                                        </span>
+                        <span class="dropdown-arrow">▼</span>
+                    </div>
+                    <div class="emoji-dropdown">
+                        <div class="emoji-grid">
+                            <?php global $availableEmojis; foreach ($availableEmojis as $emoji): ?>
+                                <div class="emoji-option <?= '' ?>"
+                                     data-emoji="<?= htmlspecialchars($emoji) ?>">
+                                    <?= htmlspecialchars($emoji) ?>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                    <input type="hidden" name="symbol" value="<?= htmlspecialchars($fach['symbol']) ?>">
+                </div>
 
                 <label for="kachelfarbe">Kachelfarbe:</label>
                 <select id="kachelfarbe" name="kachelfarbe" required>

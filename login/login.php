@@ -1,22 +1,8 @@
 <?php
 // WICHTIG: Setzen Sie hier den Namen des Projektordners!
-$PROJECT_ROOT = '/Project';
+$PROJECT_ROOT = '';
 // Hier muss der Code stehen, der für den Header auch genutzt wird,
 // damit der CSS-Link im Head funktioniert.
-?>
-<!doctype html>
-<html lang="de">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login – Administration</title>
-    <link rel="stylesheet"
-          href="<?php echo $PROJECT_ROOT; ?>/css/styles.css">
-</head>
-<body>
-<?php
-// Include-Pfad (für PHP) bleibt relativ, da er von login/ aus korrekt ist
-include("../komponenten/header.php");
 ?>
 <!doctype html>
 <html lang="de">
@@ -29,7 +15,7 @@ include("../komponenten/header.php");
 <body>
 <?php
 // Include the shared header component
-include("komponenten/header.php");
+include("../komponenten/header.php");
 ?>
 
 <main id="hauptinhalt">
@@ -77,7 +63,7 @@ include("komponenten/header.php");
 </main>
 
 <?php
-include("komponenten/footer.php");
+include("../komponenten/footer.php");
 ?>
 </body>
 </html>

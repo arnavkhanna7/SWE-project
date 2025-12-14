@@ -6,6 +6,7 @@
     <title>Lernplattform – HSGG</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/manager.css">
+
 </head>
 <body>
 <div id="page-wrapper">
@@ -18,6 +19,8 @@
     <?php
     require("../komponenten/db.php");
     include("../komponenten/util.php");
+    include_once("../komponenten/emoji_picker.php");
+
     $faecher = query_simple_assoc("SELECT * FROM hsgg.fach");
 
     $dir_name_block_list = [];
@@ -38,7 +41,6 @@
         } else {
             $editOperationInfo = '<div class="fach-failure-banner">❌ Fehler: Fach konnte nicht erstellt werden!</div>';
         }
-
     }
 
     if(isset($_POST['saveFach'])) {
@@ -59,7 +61,7 @@
         $editOperationInfo = '<div class="fach-success-banner">⚠️ Fach erfolgreich gelöscht!</div>';
     }
 
-    //Neu laden um neue Daten aus ausgeführter Operation zu übernehmen
+    // Neu laden um neue Daten aus ausgeführter Operation zu übernehmen
     $faecher = query_simple_assoc("SELECT * FROM hsgg.fach");
     ?>
 
@@ -106,7 +108,27 @@
                                 <input type="text" name="dir_name" value="<?= htmlspecialchars($fach['dir_name']) ?>" disabled maxlength="40">
                             </td>
                             <td>
-                                <input type="text" name="symbol" value="<?= htmlspecialchars($fach['symbol']) ?>" required maxlength="10">
+                                <div class="emoji-select-wrapper">
+                                    <div class="emoji-preview">
+                                        <span class="emoji-display">
+                                            <?php if (!empty($fach['symbol'])): ?>
+                                                <?= htmlspecialchars($fach['symbol']) ?>
+                                            <?php endif; ?>
+                                        </span>
+                                        <span class="dropdown-arrow">▼</span>
+                                    </div>
+                                    <div class="emoji-dropdown">
+                                        <div class="emoji-grid">
+                                            <?php global $availableEmojis; foreach ($availableEmojis as $emoji): ?>
+                                                <div class="emoji-option <?= ($fach['symbol'] === $emoji ? 'selected' : '') ?>"
+                                                     data-emoji="<?= htmlspecialchars($emoji) ?>">
+                                                    <?= htmlspecialchars($emoji) ?>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="symbol" value="<?= htmlspecialchars($fach['symbol']) ?>">
+                                </div>
                             </td>
                             <td>
                                 <select name="kachelfarbe" class="color-select" required>
@@ -139,11 +161,26 @@
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required maxlength="40">
 
-                <label for="dir_name">Verzeichnisname (dir_name) dar nicht '/' enthalten und muss einzigartig sein:</label>
+                <label for="dir_name">Verzeichnisname (dir_name) darf nicht '/' enthalten und muss einzigartig sein:</label>
                 <input type="text" id="dir_name" name="dir_name" required maxlength="40">
 
                 <label for="symbol">Symbol (Emoji oder Icon):</label>
-                <input type="text" id="symbol" name="symbol" placeholder="z. B. 📘 oder ➗" required maxlength="10">
+                <div class="emoji-select-wrapper">
+                    <div class="emoji-preview" id="emojiPreview">
+                        <span class="emoji-display" id="emojiDisplay"></span>
+                        <span class="dropdown-arrow">▼</span>
+                    </div>
+                    <div class="emoji-dropdown" id="emojiDropdown">
+                        <div class="emoji-grid">
+                            <?php foreach ($availableEmojis as $emoji): ?>
+                                <div class="emoji-option" data-emoji="<?= htmlspecialchars($emoji) ?>">
+                                    <?= htmlspecialchars($emoji) ?>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                    <input type="hidden" id="symbol" name="symbol" value="" required>
+                </div>
 
                 <label for="kachelfarbe">Kachelfarbe:</label>
                 <select id="kachelfarbe" name="kachelfarbe" required>

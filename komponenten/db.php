@@ -1,195 +1,122 @@
 <?php
-// Database configuration
-$host     = "localhost";   // or your server IP
-$username = "root";
-$password = "root";
-$database = "hsgg";
+require_once(__DIR__ . "/../config/database.php");
 
 //Für einfache Anfragen an die Datenbank
 //Nicht gegen SQL Injections abgesichert also nur bei Abfragen ohne User-inputs verwenden
 function query_simple_assoc($sql) {
-    global $host, $username, $password, $database;
-    $conn = new mysqli($host, $username, $password, $database);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $result = $conn->query($sql)->fetch_all(MYSQLI_ASSOC);
-    $conn->close();
-    return $result;
+    global $pdo;
+    return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
 
 //Alle Übungen zu einer fach_id
 function query_uebungen_fid($fid) {
-    global $host, $username, $password, $database;
-    $conn = new mysqli($host, $username, $password, $database);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $stmt = $conn->prepare('SELECT * FROM hsgg.uebung WHERE fachID = ?');
-    $stmt->bind_param("s", $fid);
+    global $pdo;
+    $stmt = $pdo->prepare('SELECT * FROM hsgg.uebung WHERE fachID = ?');
+    $stmt->bindParam(1, $fid);
     $stmt->execute();
-    $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-    $conn->close();
-    return $result;
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 //Alle Daten zu Fach mit fach_id
 function query_fach_fid($fid) {
-    global $host, $username, $password, $database;
-    $conn = new mysqli($host, $username, $password, $database);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $stmt = $conn->prepare('SELECT * FROM hsgg.fach WHERE id = ?');
-    $stmt->bind_param("s", $fid);
+    global $pdo;
+    $stmt = $pdo->prepare('SELECT * FROM hsgg.fach WHERE id = ?');
+    $stmt->bindParam(1, $fid);
     $stmt->execute();
-    $result = $stmt->get_result()->fetch_assoc();
-    $conn->close();
-    return $result;
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 //Alle Daten zu Übung mit fach_id und uebungs_id
 function query_uebung_fid_uid($fid, $uid) {
-    global $host, $username, $password, $database;
-    $conn = new mysqli($host, $username, $password, $database);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $stmt = $conn->prepare('SELECT * FROM hsgg.uebung WHERE fachID = ? AND id = ?');
-    $stmt->bind_param("ss", $fid, $uid);
+   global $pdo;
+    $stmt = $pdo->prepare('SELECT * FROM hsgg.uebung WHERE fachID = ? AND id = ?');
+    $stmt->bindParam(1, $fid);
+    $stmt->bindParam(2, $uid);
     $stmt->execute();
-    $result = $stmt->get_result()->fetch_assoc();
-    $conn->close();
-    return $result;
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 //Ermittle fachID zu uebung
 function db_query_uebung_fach($uid) {
-    global $host, $username, $password, $database;
-    $conn = new mysqli($host, $username, $password, $database);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $stmt = $conn->prepare('SELECT fachID FROM hsgg.uebung WHERE id = ?');
-    $stmt->bind_param("s",$uid);
+    global $pdo;
+    $stmt = $pdo->prepare('SELECT fachID FROM hsgg.uebung WHERE id = ?');
+    $stmt->bindParam(1, $uid);
     $stmt->execute();
-    $result = $stmt->get_result()->fetch_assoc();
-    $conn->close();
-    return $result;
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 //Updatet den Datenbank Eintrag mit neuen Texten
 function update_editable_contents($uid, $explanation_box, $tips_box) {
-    global $host, $username, $password, $database;
-    $conn = new mysqli($host, $username, $password, $database);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $stmt = $conn->prepare('UPDATE hsgg.uebung SET explanation_box = ?, tips_box = ? WHERE id = ?;');
-    $stmt->bind_param("sss", $explanation_box, $tips_box, $uid);
+    global $pdo;
+    $stmt = $pdo->prepare('UPDATE hsgg.uebung SET explanation_box = ?, tips_box = ? WHERE id = ?;');
+    $stmt->bindParam(1, $explanation_box);
+    $stmt->bindParam(2, $tips_box);
+    $stmt->bindParam(3, $uid);
     $stmt->execute();
-    $conn->close();
 }
 
 //Erstelle ein neues Fach
 function db_insert_new_fach($name, $dir_name, $symbol, $kachelfarbe) {
-    global $host, $username, $password, $database;
-    $conn = new mysqli($host, $username, $password, $database);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $stmt = $conn->prepare('INSERT INTO hsgg.fach (name, dir_name, symbol, kachelfarbe) VALUES (?, ?, ?, ?);');
-    $stmt->bind_param("ssss", $name, $dir_name, $symbol, $kachelfarbe);
+    global $pdo;
+    $stmt = $pdo->prepare('INSERT INTO hsgg.fach (name, dir_name, symbol, kachelfarbe) VALUES (?, ?, ?, ?);');
+    $stmt->bindParam(1, $name);
+    $stmt->bindParam(2, $dir_name);
+    $stmt->bindParam(3, $symbol);
+    $stmt->bindParam(4, $kachelfarbe);
     $stmt->execute();
-    $conn->close();
 }
 
 function db_update_fach($fid, $name, $dir_name, $symbol, $kachelfarbe) {
-    global $host, $username, $password, $database;
-    $conn = new mysqli($host, $username, $password, $database);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $stmt = $conn->prepare('UPDATE hsgg.fach SET name = ?, symbol = ?, kachelfarbe = ? WHERE id = ?');
-    $stmt->bind_param("ssss", $name, $symbol, $kachelfarbe, $fid);
+   global $pdo;
+    $stmt = $pdo->prepare('UPDATE hsgg.fach SET name = ?, symbol = ?, kachelfarbe = ? WHERE id = ?');
+    $stmt->bindParam(1, $name);
+    $stmt->bindParam(2, $symbol);
+    $stmt->bindParam(3, $kachelfarbe);
+    $stmt->bindParam(4, $fid);
     $stmt->execute();
-    $conn->close();
 }
 
 function db_delete_fach($fid) {
-    global $host, $username, $password, $database;
-    $conn = new mysqli($host, $username, $password, $database);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $stmt = $conn->prepare('DELETE FROM hsgg.fach WHERE id = ?');
-    $stmt->bind_param("s", $fid);
+    global $pdo;
+    $stmt = $pdo->prepare('DELETE FROM hsgg.fach WHERE id = ?');
+    $stmt->bindParam(1, $fid);
     $stmt->execute();
-    $conn->close();
 }
 
 function db_insert_new_uebung($fid, $name, $file_name, $beschreibung, $symbol, $kachelfarbe) {
-    global $host, $username, $password, $database;
-    $conn = new mysqli($host, $username, $password, $database);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
+    global $pdo;
     $fid_int = (int)$fid;
     $explanation_box = "";
     $tips_box = "";
 
-    $stmt = $conn->prepare('INSERT INTO hsgg.uebung (name, file_name, beschreibung, symbol, kachelfarbe, fachID, explanation_box, tips_box) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
-    $stmt->bind_param("sssssiss", $name, $file_name, $beschreibung, $symbol, $kachelfarbe, $fid_int, $explanation_box, $tips_box);
+    $stmt = $pdo->prepare('INSERT INTO hsgg.uebung (name, file_name, beschreibung, symbol, kachelfarbe, fachID, explanation_box, tips_box) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+    $stmt->bindParam(1, $name);
+    $stmt->bindParam(2, $file_name);
+    $stmt->bindParam(3, $beschreibung);
+    $stmt->bindParam(4, $symbol);
+    $stmt->bindParam(5, $kachelfarbe);
+    $stmt->bindParam(6, $fid_int, PDO::PARAM_INT);
+    $stmt->bindParam(7, $explanation_box);
+    $stmt->bindParam(8, $tips_box);
     $stmt->execute();
-    $conn->close();
 }
 
 function db_update_uebung($id, $name, $file_name, $beschreibung, $symbol, $kachelfarbe, $fachID) {
-    global $host, $username, $password, $database;
-    $conn = new mysqli($host, $username, $password, $database);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $fid_int = (int)$fachID;
-
-    $stmt = $conn->prepare('UPDATE hsgg.uebung SET name = ?, file_name = ?,beschreibung = ?, symbol = ?, kachelfarbe = ?, fachID = ? WHERE id = ?;');
-    $stmt->bind_param("sssssis", $name, $file_name, $beschreibung, $symbol, $kachelfarbe, $fachID, $id);
+    global $pdo;
+    $stmt = $pdo->prepare('UPDATE hsgg.uebung SET name = ?, file_name = ?,beschreibung = ?, symbol = ?, kachelfarbe = ?, fachID = ? WHERE id = ?;');
+    $stmt->bindParam(1, $name);
+    $stmt->bindParam(2, $file_name);
+    $stmt->bindParam(3, $beschreibung);
+    $stmt->bindParam(4, $symbol);
+    $stmt->bindParam(5, $kachelfarbe);
+    $stmt->bindParam(6, $fachID, PDO::PARAM_INT);
+    $stmt->bindParam(7, $id);
     $stmt->execute();
-    $conn->close();
 }
 
 function db_delete_uebung($fid) {
-    global $host, $username, $password, $database;
-    $conn = new mysqli($host, $username, $password, $database);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $stmt = $conn->prepare('DELETE FROM hsgg.uebung WHERE id = ?');
-    $stmt->bind_param("s", $fid);
+    global $pdo;
+    $stmt = $pdo->prepare('DELETE FROM hsgg.uebung WHERE id = ?');
+    $stmt->bindParam(1, $fid);
     $stmt->execute();
-    $conn->close();
 }

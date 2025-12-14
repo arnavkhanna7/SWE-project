@@ -1,7 +1,7 @@
 <?php
 // WICHTIG: Setzen Sie hier den Namen des Projektordners!
 // Wenn Ihre URL: http://localhost/meinprojekt/index.php ist, muss es 'meinprojekt' sein.
-$PROJECT_ROOT = '/Project';
+$PROJECT_ROOT = '';
 // Wenn Ihre URL: http://localhost/index.php ist, muss es leer sein: $PROJECT_ROOT = '';
 
 // Überprüfen, ob Session gestartet ist (für Username-Anzeige)

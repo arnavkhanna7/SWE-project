@@ -7,8 +7,8 @@ $uid = $_GET['u'] ?? '1';
 $fach = query_fach_fid($fid);
 $uebung = query_uebung_fid_uid($fid, $uid);
 
-$pdf_aufgaben = $fach['name'] . '/' . $uebung['file_name'] . '_aufgaben.pdf';
-$pdf_loesungen = $fach['name'] . '/' . $uebung['file_name'] . '_loesungen.pdf';
+$pdf_aufgaben = $fach['dir_name'] . '/' . $uebung['file_name'] . '_aufgaben.pdf';
+$pdf_loesungen = $fach['dir_name'] . '/' . $uebung['file_name'] . '_loesungen.pdf';
 ?>
 
 <!doctype html>
